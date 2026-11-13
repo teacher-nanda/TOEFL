@@ -1128,7 +1128,7 @@ table.cmp{width:100%;border-collapse:collapse;font-size:1.05rem;margin:6px 0}tab
     <div class="title-main">Starting Speaking<br><span class="title-accent">from Scratch</span></div>
     <a href="../index.html" title="All Courses" style="position:absolute;bottom:70px;left:32px;font-size:1.7rem;line-height:1;text-decoration:none;filter:drop-shadow(0 1px 3px rgba(0,0,0,.3));z-index:5;">Home</a>
     <div style="position:absolute;bottom:70px;right:32px;z-index:5;">
-      <button onclick="location.href='../TOEFL-1-Listen-and-Repeat/index.html#homework'" style="background:#1C2B3A;color:#fff;border:none;border-radius:10px;padding:11px 24px;font-size:.95rem;font-weight:700;cursor:pointer;letter-spacing:.03em;">Homework</button>
+      <button onclick="goToId('hw-cover')" style="background:#1C2B3A;color:#fff;border:none;border-radius:10px;padding:11px 24px;font-size:.95rem;font-weight:700;cursor:pointer;letter-spacing:.03em;">Homework</button>
     </div>
   </div>
 </div>
@@ -1250,12 +1250,19 @@ table.cmp{width:100%;border-collapse:collapse;font-size:1.05rem;margin:6px 0}tab
   </div></div>
 </div>
 
-<div class="slide" id="s-next">
-  <div class="banner banner-hw">Next step</div>
+<div class="slide" id="hw-cover">
+  <div class="title-inner">
+    <div class="hw-badge"> Homework</div>
+    <div class="title-main">Starting Speaking<br><span class="title-accent">from Scratch</span></div>
+  </div>
+</div>
+
+<div class="slide" id="hw-1">
+  <div class="banner banner-hw">Homework</div>
   <div class="slide-main"><div class="content">
-    <h2>Your next step: homework</h2>
-    <p class="instruction">Open Lesson 1 for the Listen and Repeat practice and the homework activities.</p>
-    <a class="bigbtn" href="../TOEFL-1-Listen-and-Repeat/index.html#homework">Go to the homework</a><a class="bigbtn alt" href="../index.html">All lessons</a><div class="gram-note">If you want to review this lesson again, use the arrows at the bottom or the dots in the middle.</div>
+    <h2>Homework &mdash; Listen and Repeat practice</h2>
+    <p class="instruction">Open the practice, listen to each sentence, and repeat it once.<br>Use the strategies from this lesson.</p>
+    <a class="bigbtn" href="https://www.bestmytest.com/toefl/toefl-speaking-listen-repeat/1" target="_blank" rel="noopener">Open the practice (Listen and Repeat 1)</a><div class="scg" style="grid-template-columns:repeat(1,minmax(0,1fr))"><div class="sc"><h4>While you practice</h4>Start right away after the tone.<br>Listen in chunks and remember the action + object.<br>Say the word endings and keep the rhythm.<br>If you forget a word, keep the same meaning and finish the sentence.</div></div><p class="mini-h" style="margin:12px 0 6px;">After the practice, click what you did:</p><div class="selfrow"><div class="cando"><button onclick="this.classList.toggle('on')">I started right away</button><button onclick="this.classList.toggle('on')">I listened in chunks</button><button onclick="this.classList.toggle('on')">I finished every sentence</button><button onclick="this.classList.toggle('on')">I said the word endings</button><button onclick="this.classList.toggle('on')">I kept the same meaning</button><button onclick="this.classList.toggle('on')">I took care with the long sentences</button></div></div><a class="bigbtn alt" href="../TOEFL-1-Listen-and-Repeat/index.html" style="margin-top:12px">Next: Lesson 1</a>
   </div></div>
 </div>
 
@@ -1274,8 +1281,8 @@ table.cmp{width:100%;border-collapse:collapse;font-size:1.05rem;margin:6px 0}tab
 
 <script>
 /* ===================== SLIDE NAV DATA ===================== */
-var slideIds = ["s1", "s-goal", "s-sec", "s-prep", "s-lr", "s-sc1", "s-sc2", "s-prog", "s-score", "s-ex", "s-listen", "s-rep", "s-rt", "s-cp", "s-next"];
-var slideLabels = ["Cover", "What we covered", "The Speaking section", "How to practice", "Listen and Repeat at a glance", "Scenarios 1", "Scenarios 2", "From short to long", "Scoring from 1 to 5", "Scoring examples", "Listening strategies", "Repeating strategies", "Practice: wireless router", "What we have learned", "Your next step"];
+var slideIds = ["s1", "s-goal", "s-sec", "s-prep", "s-lr", "s-sc1", "s-sc2", "s-prog", "s-score", "s-ex", "s-listen", "s-rep", "s-rt", "s-cp", "hw-cover", "hw-1"];
+var slideLabels = ["Cover", "What we covered", "The Speaking section", "How to practice", "Listen and Repeat at a glance", "Scenarios 1", "Scenarios 2", "From short to long", "Scoring from 1 to 5", "Scoring examples", "Listening strategies", "Repeating strategies", "Practice: wireless router", "What we have learned", "Homework Cover", "HW - Listen and Repeat practice"];
 var slides = Array.from(document.querySelectorAll('.slide'));
 var current = 0;
 var notesStoreKey = 'aefNotes::' + document.title;
@@ -1902,10 +1909,10 @@ function swReset(id){ var b=document.getElementById(id); if(SWT[id]){ clearInter
 function saveLesson(){
   saveNotes();
   var css=[].map.call(document.querySelectorAll('style'),function(s){return s.textContent;}).join('\n');
-  var base='https://teacher-nanda.github.io/TOEFL/', url=base+'TOEFL-0-Starting-from-Scratch/index.html', hw=base+'TOEFL-1-Listen-and-Repeat/index.html#homework';
+  var base='https://teacher-nanda.github.io/TOEFL/', url=base+'TOEFL-0-Starting-from-Scratch/index.html', hw=url+'#homework';
   var body='';
   slideIds.forEach(function(id,i){
-    if(i===0||id==='s-next') return;
+    if(i===0||id==='hw-cover') return;
     var c=document.getElementById(id).querySelector('.content').cloneNode(true);
     var n=(notesData[i]||'');
     var nh=n.replace(/<[^>]*>/g,'').trim()?'<div class="pn"><b>My notes</b><br>'+n+'</div>':'';
